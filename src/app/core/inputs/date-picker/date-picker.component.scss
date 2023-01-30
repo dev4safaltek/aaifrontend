@@ -1,0 +1,23 @@
+.mat-datepicker-input {
+    width: 75%;
+  }
+  
+  // mat-icon {
+  //   position: absolute;
+  //   float: right;
+  //   margin-right: 0px;
+  //   cursor: pointer;
+  //   color: rgba(0, 0, 0, 0.54);
+  //   font-size: 17px;
+  // }
+
+  mat-icon {
+    font-size: 17px;
+    position: relative;
+    float: right;
+    top: 0px;
+    right: 2px;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.54);
+    height: 10px;
+  }

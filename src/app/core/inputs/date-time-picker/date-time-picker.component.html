@@ -1,0 +1,11 @@
+<div class="font-14">
+  <mat-form-field>
+    <input matInput [ngxMatDatetimePicker]="picker" [placeholder]="placeholder" [value]="value" [attr.disabled]="disabled"
+      [formControl]="control" (dateChange)="onChange($event)" [readonly]="readonly" [max]="maxDate">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <ngx-mat-datetime-picker #picker [enableMeridian]="enableMeridian"></ngx-mat-datetime-picker>
+    <mat-error>
+      {{validate()}}
+    </mat-error>
+  </mat-form-field>
+</div>

@@ -1,0 +1,47 @@
+<div class='custom-loader' *ngIf="loaderflag" id=loader >
+	<img src='../../../../../assets/images/loader.gif' alt=''>
+	Loading...
+  </div>
+<div class="main-wrapper" [ngClass]="{'loader-bg' : loaderflag}">
+	<div class="left-wrap">
+		<a [routerLink]="['/Dashboard']" title="AAI"><img style="height:150px;width:150px;" src="../../../../assets/images/person-orange.png" alt="AAI"> </a>
+		<div class="form-wrap">
+			<h1>Login</h1>
+			<form class="login" [formGroup]="form">
+				<P *ngIf="errorMsg" style="color: red;">Please enter valid username & password</P>
+				<div class="form-field">
+					<mat-form-field appearance="fill">
+						<mat-label>User Name</mat-label>
+						<input pattern=".*\S+.*" type="text" maxlength="30" formControlName="Username" matInput autocomplete="email">
+						<mat-error *ngIf="'Username.invalid'">Please enter valid username</mat-error>
+					</mat-form-field>
+					<!-- <span class="error-text" *ngIf="errorMsg">Please Enter Valid Username & Password</span> -->
+				</div>
+				<div class="form-field">
+					<mat-form-field appearance="fill">
+						<mat-label>Password</mat-label>
+						<input [type]="showPassword ? 'text' : 'password'" maxlength="20" matInput formControlName="Password" autocomplete="new-password">
+						<mat-icon matSuffix (click)="togglePasswordVisibility()">
+							{{showPassword?'visibility_off':'visibility'}}
+						</mat-icon>
+						<mat-error *ngIf="'Password.invalid'">Please enter valid password</mat-error>
+					</mat-form-field>
+				</div>
+				<a class="forpass" title="Forgot Password?" [routerLink]="['/ForgotPassword']"> Forgot Password? </a>
+				<button type="submit" (click)="Login()" class="custom-btn" (window:keypress.enter)="Login()" >
+					Login
+				</button>
+				<p class="sign-text">Don’t have account? <a type="button" (click)="SignUpControl()">Sign up</a> </p>
+
+				<!-- <div class="form-check">
+						<input class="form-check-input" value="false" type="checkbox" #IsRememberMe="ngModel"
+							name="IsRememberMe" ngModel id="IsRememberMe" style="margin-left:15px; margin-top: 3px;">
+						<label class="form-check-label" for="flexCheckDefault">
+							Remember Me
+						</label>
+					</div> -->
+
+			</form>
+		</div>
+	</div>
+</div>

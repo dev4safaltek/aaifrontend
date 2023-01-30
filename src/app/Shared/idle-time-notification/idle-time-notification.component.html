@@ -1,0 +1,19 @@
+<div mat-dialog>
+    <div mat-dialog-title>
+      <div class="row">
+        <div class="col-md-12">
+          {{data.title}}
+          <mat-icon  style="float:right" matTooltip="Close" class="modal-close" (click)="onCancelClick()">close</mat-icon>
+        </div>
+  
+      </div>
+    </div>
+    <mat-dialog-content>
+      <div class="row">
+        <div class="col-md-12">
+          <p [innerHTML]="data.message"></p>
+        </div>
+      </div>
+    </mat-dialog-content>
+  
+  </div>

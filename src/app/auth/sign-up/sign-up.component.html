@@ -1,0 +1,201 @@
+<div class='custom-loader' *ngIf="loaderflag" id=loader >
+	<img src='../../../../../assets/images/loader.gif' alt=''>
+	Loading...
+  </div>
+<div class="main-wrapper" [class.sdetailHeight]="SignUpDetailSection">
+  <div class="left-wrap" [class.category-wrap]="CategorySection">
+    <a [routerLink]="['/Dashboard']" title=""><img style="height:150px;width:150px;" src="../../assets/images/person-orange.png" alt="AAI"> </a>
+    <div class="form-wrap">
+      <h1>Sign up</h1>
+
+      <form [formGroup]="form">
+        <section id="section1" *ngIf="CategorySection">
+          <div class="form-field">
+            <mat-form-field appearance="fill">
+              <mat-label>Category</mat-label>
+              <mat-select (click)="CheckcategoryFlag()" formControlName="Category" aria-placeholder="Category">
+                <mat-option *ngFor=" let category of allCategoryList" value="{{category.Id}}">{{category.TypeName}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="'Category.invalid'">Please select category</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="btn-wrap">
+            <button class="custom-btn" (click)="NextProcess('CategorySection',$event)">
+              <p>Next</p>
+              <div class="icon-wrap">
+                <img src="../../../../assets/images/right-arrow.svg" alt="">
+              </div>
+            </button>
+            <p class="sign-text">Already have account? <a type="button" [routerLink]="['/login']">Login</a> </p>
+          </div>
+        </section>
+      </form>
+      <form [formGroup]="form">
+        <Section id="section2" *ngIf="SignUpDetailSection">
+          <div class="field-row">
+            <div class="form-field">
+              <mat-form-field appearance="fill">
+                <mat-label>First Name</mat-label>
+                <input type="text" pattern=".*\S+.*" maxlength="30"  matInput formControlName="FirstName" autocomplete="off">
+                <mat-error *ngIf="'FirstName.invalid'">Please enter first name.</mat-error>
+              </mat-form-field>
+
+            </div>
+            <div class="form-field">
+              <mat-form-field appearance="fill">
+                <mat-label>Last Name</mat-label>
+                <input type="text" pattern=".*\S+.*" maxlength="30"  matInput formControlName="LastName" autocomplete="off">
+                <mat-error *ngIf="'LastName.invalid'">Please enter last name.</mat-error>
+              </mat-form-field>
+
+            </div>
+            <div class="form-field">
+              <mat-form-field appearance="fill">
+                <mat-label>Email</mat-label>
+                <input type="email" maxlength="50" autocomplete="list" matInput formControlName="Email"
+                ng-pattern="/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/" autocomplete="email">
+                <mat-error *ngIf="'Email.invalid'">Please enter valid email address.</mat-error>
+              </mat-form-field>
+ 
+            </div>
+            <div class="form-field">
+              <mat-form-field appearance="fill">
+                <mat-label>Phone Number</mat-label>
+                <input type="tel" matInput formControlName="Phone" placeholder="xxx-xxx-xxxx" mask="(000) 000-0000" autocomplete="off">
+                <mat-error *ngIf="'Phone.invalid'">Please enter valid phone number</mat-error>
+              </mat-form-field>
+
+            </div>
+            <div class="form-field full-wrap">
+              <mat-form-field appearance="fill">
+                <mat-label>User Name</mat-label>
+                <input type="text" pattern=".*\S+.*" maxlength="30" matInput formControlName ="UserName"  autocomplete="email">
+                <mat-error *ngIf="'UserName.invalid'">Please enter username.</mat-error>
+              </mat-form-field>
+
+            </div>
+            <div class="form-field">
+              <mat-form-field appearance="fill">
+                <mat-label>Password</mat-label>
+                <input [type]="showPassword ? 'text' : 'password'" minlength="8" maxlength="20" matInput formControlName="Password" pattern=".*\S+.*" autocomplete="new-password">
+                  <mat-icon matSuffix (click)="togglePasswordVisibility()">
+                    {{showPassword?'visibility_off':'visibility'}}
+                  </mat-icon>
+                <mat-error *ngIf="'Password.invalid'"> Please enter password(8 character min.)
+                </mat-error>
+              </mat-form-field>
+
+            </div>
+            <div class="form-field">
+              <mat-form-field appearance="fill">
+                <mat-label>Confirm Password</mat-label>
+                <input [type]="showConfirmPassword ? 'text' : 'password'" matInput minlength="8" maxlength="20" formControlName="ConfirmPassword" autocomplete="new-password">
+                  <mat-icon matSuffix (click)="toggleConfirmPasswordVisibility()" (mouseout)="checkIsValidPassword()" (focusout)="checkIsValidPassword()">
+                    {{showConfirmPassword?'visibility_off':'visibility'}}
+                  </mat-icon>
+                <mat-error *ngIf="'ConfirmPassword.invalid'">Password doesn't match.
+                </mat-error>
+                <mat-error *ngIf="PasswordMisMatch">Password doesn't match.</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="form-field full-wrap">             
+              <mat-checkbox formControlName="CheckTermCondition"><b style ="color:red;">*</b> By checking this box, you agree to our <a>Terms</a> & <a>Privacy</a>               
+              </mat-checkbox>
+            </div>
+          </div>
+
+          <div class="btn-wrap">
+            <Button class="custom-btn prev" (click)="NextProcess('','')" >
+              <div class="icon-wrap">
+                <img src="../../../../assets/images/left-arrow.svg" alt="">
+              </div>
+              <p>Previous</p>
+            </Button>
+            &nbsp;
+            <Button class="custom-btn next" (click)="SignUp()"> <p>SignUp</p> 
+              <div class="icon-wrap">
+                <img src="../../../../assets/images/right-arrow.svg" alt="">
+              </div>
+            </Button>
+          </div>
+          &nbsp;
+          <p class="sign-text">Already have account? &nbsp;<a type="button" [routerLink]="['/login']">Login</a> </p>
+
+        </Section>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- about Dialog start -->
+<div class="modal fade" id="superAbout" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+	aria-labelledby="staticBackdropLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable about-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="staticBackdropLabel">AAI</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<div class="about-text-wrap">
+					<div class="row">
+						<div class="col-md-6 about-us">
+							<h4>About Us</h4>
+							<h2>Welcome to the world's first complete care coordination platform. </h2>
+						</div>
+						<div class="col-md-6">
+							<p>Whether you are a case manager, a home care agency, a family/client, or someone who wants
+								to care for those that need you, we at your service.</p>
+							<p> We recognized the inefficiency in the system and have built this platform for YOU! With
+								over 100+ years of expertise, we are committed to make your journey one that is
+								unprecedented and easy. We have it all for you in one easy to use platform.</p>
+						</div>
+					</div>
+					<div class="img-wrap about-top">
+						<img src="../../../../assets/images/pics.png" alt="About Us">
+					</div>
+
+					<div class="row no-more">
+						<div class="col-md-6">
+							<div class="img-wrap">
+								<img src="../../../../assets/images/no-more.png" alt="">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<h2>No more multiple follow ups, calls, emails or texts.</h2>
+							<p>We have you covered. If communication and preferences aren't on here, we promise you, you
+								will experience some level of frustration. We are transparent, easy and all about our
+								experience. </p>
+						</div>
+					</div>
+					<div class="try-us-wrap">
+						<div class="row">
+							<div class="col-md-6 text-wrap">
+								<h2>Try us today</h2>
+								<p>You won't be disappointed. Our families, agencies, referrals and care team members
+									have
+									yet to be disappointed. This is the future of the home care continuum! We can't wait
+									to
+									serve you!</p>
+							</div>
+							<div class="col-md-6">
+								<div class="img-wrap">
+									<img src="../../../../assets/images/try-us.png" alt="Try us today">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- <div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary">Understood</button>
+			</div> -->
+	</div>
+</div>
+<!-- about dialog ends -->

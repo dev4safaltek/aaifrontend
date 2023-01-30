@@ -1,0 +1,128 @@
+<header>
+    <nav class="navbar">
+        <div class="left-wrap">
+            <a class="toggle-Icon" href="javascript:void(0);" onclick="navToggle()">
+                <mat-icon>menu</mat-icon>
+            </a>
+            <form class="search-wrap" [formGroup]="newForm">
+                <input class="form-control me-2" [matAutocomplete]="auto" formControlName="Search" type="search" keyup placeholder="Search Menu" aria-label="Search" 
+                (keyup)="GetMenuList($event)">
+                <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor=" let option of MenuList" [value]="option"
+                     (onSelectionChange)="MenuValue(option)">
+                      {{option}}
+                    </mat-option>
+                </mat-autocomplete>
+            </form>
+        </div>
+        <ul class="d-flex align-items-center p-0 m-0">
+            <li class="nav-item dropdown">
+                <a class="noti-wrap" title="View Notifications" id="notiDropdown" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    <img src="../../../assets/images/noti.svg" alt="">
+                    <div class="count-wrap">
+                        {{notificationCount}}
+                    </div>
+                </a>
+                <div class="dropdown-menu notification" aria-labelledby="notiDropdown" >
+                    <div class="head-li">
+                        <b>Notifications</b>
+                        <a title="Clear All" (click)="ClearAllNotifications()">Clear All</a>
+                    </div>
+                    <ul class="allNotification" >
+                        <li *ngFor=" let item of Notificationdata">
+                            <a class="green-btn" (click)="OpenNotificationDetail(item.Id,item.NotificationId)" title="NotificationText">{{item.Title}}</a>
+                            <h2>{{item.Title}} </h2>
+                            <p>{{item.NotificationText}}</p>
+                            <p class="time-wrap"><img src="../../../assets/images/watch-icon.png" alt="">
+                                {{item.NotificationDate | date : 'dd MMM yyyy hh:mm a'}} &nbsp;
+                                <Button *ngIf="item.ShiftId!=null" class="custom-btn" [routerLink]="['/Dashboard/add-edit-caregivershift', item.ShiftId,3]" data-toggle="tooltip" data-placement="right" title="apply shift" > View </Button>
+                                <!-- <a *ngIf="item.ShiftId!=null" [routerLink]="['/Dashboard/add-edit-caregivershift', item.ShiftId,2]">
+                                    <img class="edit-eye" src="../../../../assets/images/edit-eye.png" alt="icon" data-toggle="tooltip" data-placement="right" title="View Shift">
+                            </a> -->
+                        </p>
+                        </li>
+                    </ul>
+                    <!-- 27 Aug 2022 at 12:00 AM -->         
+                    <div class="foot-li"><a [routerLink]="['/Dashboard/view-notification/0']" title="View All Notifications">View All Notifications</a></div>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="user-wrap dropdown-toggle" id="navbarDropdown" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <div class="img-wrap">
+                        <img [src]="imageSrc || '../../../../../assets/images/profile-holder.png'" alt="">
+                    </div>
+                    <span>{{fullName}}</span>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li class="log-user">
+                        <h4>{{fullName}}</h4>{{useremail}}
+                    </li>
+                    <li *ngIf="userType==1"><a class="dropdown-item" title="My Profile" [routerLink]="['/Dashboard/profile/'+userId]" >
+                            <img src="../../../assets/images/my-profile.svg" alt="My Profile"> My Profile
+                        </a>
+                    </li>
+                    <li *ngIf="userType==2"><a class="dropdown-item" title="My Profile" [routerLink]="['/Dashboard/patient-profile/'+userId]" >
+                        <img src="../../../assets/images/my-profile.svg" alt="My Profile"> My Profile
+                    </a>
+                  </li>
+                  <li *ngIf="userType==3 && disabledControl==1"><a class="dropdown-item" title="My Profile" [routerLink]="['/Dashboard/caregiver-profile/'+userId]" >
+                    <img src="../../../assets/images/my-profile.svg" alt="My Profile"> My Profile
+                   </a>
+                  </li>
+                  <li *ngIf="userType==4 && disabledControl==1"><a class="dropdown-item" title="My Profile" [routerLink]="['/Dashboard/agency-profile/'+userId]" >
+                    <img src="../../../assets/images/my-profile.svg" alt="My Profile"> My Profile
+                   </a>
+                  </li>
+                  <li *ngIf="userType==5 && disabledControl==1"><a class="dropdown-item" title="My Profile" [routerLink]="['/Dashboard/referral-profile/'+userId]" >
+                    <img src="../../../assets/images/my-profile.svg" alt="My Profile"> My Profile
+                   </a>
+                  </li>
+                    <!-- <li  *ngIf="userType==1 || userType==2"><a class="dropdown-item" title="Notification Email">
+                            <img src="../../../assets/images/noti-icon.svg" alt="Notification Email">
+                            Notification Email
+                        </a>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" id="switch" type="checkbox" role="switch" checked>
+                            <label class="custom-control-label" for="switch"></label>
+                        </div>
+                    </li> -->
+                    <li *ngIf="userType==1 || userType==2"><a class="dropdown-item" [routerLink]="['/ResetPassword']" title="Change Password">
+                            <img src="../../../assets/images/lock.svg" alt="Change Password"> Change Password
+                        </a>
+                    </li>
+
+                    <!-- <li  *ngIf="userType==3 || userType==4 || userType==5 && disabledControl==1">
+                        <a class="dropdown-item" title="Notification Email">
+                        <img src="../../../assets/images/noti-icon.svg" alt="Notification Email">
+                        Notification Email
+                    </a>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" id="switch" type="checkbox" role="switch" checked>
+                        <label class="custom-control-label" for="switch"></label>
+                    </div>
+                </li> -->
+                <li *ngIf="userType==3 || userType==4 || userType==5 && disabledControl==1"><a class="dropdown-item" [routerLink]="['/ResetPassword']" title="Change Password">
+                        <img src="../../../assets/images/lock.svg" alt="Change Password"> Change Password
+                    </a>
+                </li>
+
+
+
+                    <li><a class="dropdown-item" (click)="logout()" title="Logout">
+                            <img src="../../../assets/images/logout.png" alt="Logout">
+                            Logout
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+
+
+
+

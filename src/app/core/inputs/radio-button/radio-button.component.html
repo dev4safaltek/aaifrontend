@@ -1,0 +1,20 @@
+<!-- <mat-label>{{label}}</mat-label>-->
+
+<!-- <mat-radio-button class="radiobutton-full-width" 
+[value]="value"  
+[checked]="checked" [labelPosition] = "labelPosition">
+<span>{{placeholder}}</span>
+<mat-label>{{labelHeader}}</mat-label>
+</mat-radio-button>  -->
+
+<!-- <mat-form-field  class="mat-form-field--no-underline"> -->
+<!-- <input matInput placeholder="{{placeholder}}"> -->
+<div class="font-14">
+  <mat-radio-group [formControl]="control" class="radiobutton-full-width">
+    &nbsp;&nbsp; <span>{{placeholder}} :</span>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <mat-radio-button value="1" (change)="onChange($event)">Yes</mat-radio-button>&nbsp;&nbsp;
+    <mat-radio-button value="0" (change)="onChange($event)">No</mat-radio-button>
+  </mat-radio-group>
+</div>
+<!-- </mat-form-field> -->

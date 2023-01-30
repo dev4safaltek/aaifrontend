@@ -1,0 +1,10 @@
+  <mat-form-field class="textarea-full-width">
+      <textarea matInput placeholder="{{placeholder}}" autocomplete="off" [formControl]="control" [type]="type"  [readonly]="readonly" [minlength]="min" [maxlength]="max"
+       [attr.disabled]="disabled" ></textarea>
+      <mat-error>
+          {{validate()}}
+      </mat-error>
+  </mat-form-field> 
+
+
+  

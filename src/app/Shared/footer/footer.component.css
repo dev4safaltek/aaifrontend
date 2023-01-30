@@ -1,0 +1,35 @@
+footer {
+    background: #142A44;
+    color: #fff;
+    text-align: center;
+    margin: 0 -30px;
+    padding: 14px 0;
+}
+
+footer p {
+    margin: 0 !important;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+@media screen and (max-width: 1600px) {
+    footer {
+        margin: 0 -20px;
+        padding: 10px 0;
+    }
+    
+    footer p {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    footer {
+        margin: 0 -20px;
+        padding: 10px 0;
+    }
+    
+    footer p {
+        font-size: 13px;
+    }
+}

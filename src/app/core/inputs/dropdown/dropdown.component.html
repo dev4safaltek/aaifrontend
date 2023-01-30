@@ -1,0 +1,26 @@
+<div class="font-14">
+  <ng-container *ngIf="control">
+    <mat-form-field class="dropdown-full-width">
+      <mat-select placeholder="{{placeholder}}" [formControl]="control" (selectionChange)="onChange($event)"
+      [attr.disabled]="disabled" [value]="value" [requiredmessage]="requiredmessage" #dropdown >
+        <mat-option *ngFor="let option of options" [title]="option.label" [value]="option.value" [disabled]="option.disabled">{{option.label}}
+        </mat-option>
+      </mat-select>
+      <mat-error>
+        {{validate()}}
+      </mat-error>
+    </mat-form-field>
+  </ng-container>
+  <ng-container *ngIf="!control">
+    <mat-form-field class="dropdown-full-width">
+      <mat-select placeholder="{{placeholder}}" (selectionChange)="onChange($event)" [value]="value"
+        [disabled]="disabled" #dropdown>
+        <mat-option *ngFor="let option of options" [title]="option.label" [value]="option.value" [disabled]="option.disabled">{{option.label}}
+        </mat-option>
+      </mat-select>
+      <mat-error>
+        {{validate()}}
+      </mat-error>
+    </mat-form-field>
+  </ng-container>
+</div>

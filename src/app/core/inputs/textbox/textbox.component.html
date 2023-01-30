@@ -1,0 +1,9 @@
+<div class="font-14">
+    <mat-form-field class="textbox-full-width">
+        <input matInput placeholder="{{placeholder}}" autocomplete="off" [formControl]="control" [type]="type" [minlength]="min" [maxlength]="max" [readonly]="readonly"
+            [attr.disabled]="disabled" placeholder="placeholder"/>
+        <mat-error>
+            {{validate()}}
+        </mat-error>
+    </mat-form-field>
+</div>

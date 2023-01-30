@@ -1,0 +1,13 @@
+<div class="font-14">
+  <mat-form-field class="dropdown-full-width">
+    <mat-select [formControl]="control" placeholder="{{placeholder}}"  multiple (openedChange)="resetFilter()" (selectionChange)="onChange($event)" [value]="value">
+      <input type="textbox" *ngIf="allowsearch" [value]="filterText" #inputText (keyup)="setFilterText(inputText.value)" class="form-control" style="position: sticky; top:0; z-index:999"
+        placeholder="Search......." [requiredmessage]="requiredmessage">
+      <mat-option   *ngFor="let option of getOptions" [title]="option.label" [value]="option.value" [attr.disabled]="option.disabled" >{{option.label}}
+      </mat-option>
+    </mat-select>
+    <mat-error>
+      {{validate()}}
+    </mat-error>
+  </mat-form-field>
+</div>
