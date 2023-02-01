@@ -35,6 +35,8 @@ import { MatIconModule} from '@angular/material/icon';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DatePipe } from '@angular/common';
 import { IdleTimeNotificationComponent} from './Shared/idle-time-notification/idle-time-notification.component';
+import { ApplicationMasterComponent} from '../app/Platform/applicationmaster/applicationmaster.component';
+import { DashboardComponent} from '../app/Platform/dashboard/dashboard.component'; 
 
 
 
@@ -53,6 +55,8 @@ import { IdleTimeNotificationComponent} from './Shared/idle-time-notification/id
     ResetPasswordComponent,
     CustomPhoneFormatPipe,
     IdleTimeNotificationComponent,
+    ApplicationMasterComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

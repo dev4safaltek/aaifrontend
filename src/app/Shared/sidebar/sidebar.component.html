@@ -1,311 +1,190 @@
-<aside>
-    <div class="logo-wrap">
-        <a class="close-icon" href="javascript:void(0);" onclick="closeToggle()">
-            <mat-icon>close</mat-icon>
-        </a>
-        <a  [routerLink]="['/Dashboard']" title="AAI"> 
-            <img src="../../../assets/images/profile-holder.png" alt="AAI"></a>
-
-    </div>
-    <div class="menu-list">
-        <ul class="navbar-nav" *ngIf="userType==1" id="navbar">
-            <!-- super admin menus list start -->
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/Dashboard']" [routerLinkActive]="['active']" title="Dashboard">
-                    <div class="img-icon">
-                        <img src="../../../assets/images/dashboard.svg" alt="Dashboard">
-                    </div> Dashboard
-                </a>
+<aside class="main-sidebar">
+    <!-- sidebar-->
+    <section class="sidebar position-relative">
+      <div class="multinav">
+      <div class="multinav-scroll" style="height: 100%;">	
+          <!-- sidebar menu-->
+          <ul class="sidebar-menu" data-widget="tree">
+            <li>
+              <a href="dashboard.html">
+                <i data-feather="monitor"></i>
+                <span>Dashboard</span>
+              </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/Dashboard/ManageReferrals']" [routerLinkActive]="['active']" title="Manage Referrals">
-                    <div class="img-icon">
-                        <img src="../../../assets/images/manage-referrals.svg" alt="Manage Referrals">
-                    </div> Manage Referrals
-                </a>
-            </li> 
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/Dashboard/ManageAgencies']" [routerLinkActive]="['active']"
-                    title="Manage Agencies">
-                    <div class="img-icon">
-                        <img src="../../../assets/images/manage-agencies.svg" alt="Manage Agencies">
-                    </div> Manage Agencies
-                </a>
+            <li>
+              <a href="javascript:void(0);">
+                <i data-feather="check-circle"></i>
+                <span>Authorizations</span>
+              </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" title="Manage Caregivers" [routerLink]="['/Dashboard/ManageCaregiver']"
-                    [routerLinkActive]="['active']">
-                    <div class="img-icon">
-                        <img src="../../../assets/images/caregiver.svg" alt="Manage Caregivers">
-                    </div> Manage Caregivers
-                </a>
+            <li>
+              <a href="javascript:void(0);">
+                <i data-feather="share-2"></i>
+                <span>Allocations</span>
+              </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" title="Manage Patient" [routerLink]="['/Dashboard/ManagePatientFamily']"
-                    [routerLinkActive]="['active']">
-                    <div class="img-icon">
-                        <img src="../../../assets/images/manage-patient.svg" alt="Manage Patient">
-                    </div> Manage Patient
-                </a>
+            <li>
+              <a href="javascript:void(0);">
+                <i data-feather="shield"></i>
+                <span>Issurance</span>
+              </a>
             </li>
-
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" [routerLinkActive]="['active']" id="navbarDropdown" role="button" data-bs-toggle="dropdown" data-bs-auto-close="false" 
-                    aria-expanded="false" title="Manage Shifts">
-                    <div class="img-icon">
-                        <img src="../../../assets/images/caregiver.svg" alt="Caregiver">
-                    </div>
-                    Manage Shifts
-                </a>
-                <ul class="dropdown-menu active" aria-labelledby="navbarDropdown" (click)="preventEvent($event)">
-                    <li><a class="dropdown-item" [routerLink]="['/Dashboard/ManageShiftTemplate']"
-                        [routerLinkActive]="['active']">
-                        <div class="img-icon">
-                            <img src="../../../assets/images/inner-menu-img.svg" alt="Master">
-                        </div>
-                       Shift Template
-                    </a></li>
-                    
-                    <li><a class="dropdown-item active" [routerLink]="['/Dashboard/add-edit-shift/0/add']"
-                        [routerLinkActive]="['active']">
-                        <div class="img-icon">
-                            <img src="../../../assets/images/inner-menu-img.svg" alt="Caregiver Assigned">
-                        </div>
-                        Create New Shift</a></li>                                      
-
-                    <li><a class="dropdown-item" [routerLink]="['/Dashboard/openshift']"
-                        [routerLinkActive]="['active']">
-                            <div class="img-icon">
-                                <img src="../../../assets/images/inner-menu-img.svg" alt="Caregiver Assigned">
-                            </div>
-                            Open Shifts
-                        </a></li>
-                    <li><a class="dropdown-item" [routerLink]="['/Dashboard/pendingshift']"
-                          [routerLinkActive]="['active']">
-                            <div class="img-icon">
-                                <img src="../../../assets/images/inner-menu-img.svg" alt="Request Caregiver">
-                            </div>
-                            Pending Shifts
-                        </a></li>
-                    <li><a class="dropdown-item" [routerLink]="['/Dashboard/completedshift']"
-                            [routerLinkActive]="['active']">
-                            <div class="img-icon">
-                                <img src="../../../assets/images/inner-menu-img.svg" alt="Request Caregiver">
-                            </div>
-                            Completed Shifts
-                        </a></li>
-
-                    <li><a class="dropdown-item" [routerLink]="['/Dashboard/approvedshift']"
-                            [routerLinkActive]="['active']">
-                            <div class="img-icon">
-                                <img src="../../../assets/images/inner-menu-img.svg" alt="Request Caregiver">
-                            </div>
-                            Approved Shifts
-                        </a></li>
-
-                    <li><a class="dropdown-item" [routerLink]="['/Dashboard/appliedshift']"
-                            [routerLinkActive]="['active']">
-                            <div class="img-icon">
-                                <img src="../../../assets/images/inner-menu-img.svg" alt="Request Caregiver">
-                            </div>
-                            Applied Shifts
-                        </a>
-                    </li>
-                    <li><a class="dropdown-item" [routerLink]="['/Dashboard/invitedshift']"
-                            [routerLinkActive]="['active']">
-                            <div class="img-icon">
-                                <img src="../../../assets/images/inner-menu-img.svg" alt="Request Caregiver">
-                            </div>
-                            Invited Shifts
-                        </a>
-                    </li>
-                    <li><a class="dropdown-item" [routerLink]="['/Dashboard/cancelledShift']"
-                        [routerLinkActive]="['active']">
-                        <div class="img-icon">
-                            <img src="../../../assets/images/inner-menu-img.svg" alt="Cancelled Shifts">
-                        </div>
-                        Cancelled Shifts
+            <li class="treeview">
+              <a href="javascript:void(0);">
+                <i data-feather="file-text"></i>
+                <span>Reports</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-right pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">											
+                <li class="treeview">
+                    <a href="javascript:void(0);">
+                        <i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>General Reports
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-right pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">											
+                        <li>
+                            <a href="javascript:void(0);">
+                                <i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Authorizations Date
+                            </a>
+                        </li>												
+                        <li>
+                            <a href="javascript:void(0);">
+                                <i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>BC Date
+                            </a>
+                        </li>										
+                        <li>
+                            <a href="javascript:void(0);">
+                                <i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Bond Issue
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);">
+                                <i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Fund Act Section
+                            </a>
+                        </li>
+                      </ul>
+                </li>												
+                <li class="treeview">
+                    <a href="javascript:void(0);">
+                        <i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>GO Reports
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-right pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">											
+                        <li>
+                            <a href="javascript:void(0);">
+                                <i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>SBC Allocation
+                            </a>
+                        </li>												
+                        <li>
+                            <a href="javascript:void(0);">
+                                <i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Cleared Columns
+                            </a>
+                        </li>										
+                        <li>
+                            <a href="javascript:void(0);">
+                                <i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Allocated Issued
+                            </a>
+                        </li>
+                    </ul>
+                </li>										
+                <li class="treeview">
+                    <a href="javascript:void(0);">
+                        <i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>STO Reports
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-right pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">											
+                        <li>
+                            <a href="javascript:void(0);">
+                                <i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Available To Allocate
+                            </a>
+                        </li>												
+                        <li>
+                            <a href="javascript:void(0);">
+                                <i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Available To Issue
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="javascript:void(0);">
+                        <i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>CWF/DWF Revenue
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-right pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">											
+                        <li>
+                            <a href="javascript:void(0);">
+                                <i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Allocated and Isssued
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0);">
+                        <i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Adhoc Reporting
                     </a>
                 </li>
-                </ul>
+              </ul>
             </li>
-
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/Dashboard/scheduler']" [routerLinkActive]="['active']"
-                    title="Scheduler">
-                    <div class="img-icon">
-                        <img src="../../../assets/images/schedular.png" alt="Manage Shifts">
-                    </div> Scheduler
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/Dashboard/ManageRolePermission']" [routerLinkActive]="['active']"
-                    title="Role Permissions">
-                    <div class="img-icon">
-                        <img src="../../../assets/images/role-permission.svg" alt="Role Permissions">
-                    </div>Role Permissions
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" title="Manage Users" [routerLink]="['/Dashboard/ManageUsers']"
-                    [routerLinkActive]="['active']">
-                    <div class="img-icon">
-                        <img src="../../../assets/images/caregiver.svg" alt="Manage Caregivers">
-                    </div> Manage Users
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" title="Subscription" [routerLink]="['/Dashboard/subscription']"
-                    [routerLinkActive]="['active']">
-                    <div class="img-icon">
-                        <img src="../../../assets/images/subscription.svg" alt="Subscription">
-                    </div> Payment Logs
-                </a>
-            </li>
-
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" [routerLinkActive]="['active']" id="navbarDropdown" role="button" data-bs-toggle="dropdown" data-bs-auto-close="false"
-                    aria-expanded="false" title="Manage Shifts">
-                    <div class="img-icon">
-                        <img src="../../../assets/images/subscription.svg" alt="Subscription Plan">
-                    </div>
-                    Subscription Plans
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown" (click)="preventEvent($event)">
-                    <li><a class="dropdown-item active" [routerLink]="['/Dashboard/subscription-plan']"
-                            [routerLinkActive]="['active']">
-                            <div class="img-icon">
-                                <img src="../../../assets/images/inner-menu-img.svg" alt="Caregiver Assigned">
-                            </div>
-                            All Plans
-                        </a></li>
-                    <li><a class="dropdown-item" [routerLink]="['/Dashboard/discount-codes']"
-                            [routerLinkActive]="['active']">
-                            <div class="img-icon">
-                                <img src="../../../assets/images/inner-menu-img.svg" alt="Request Caregiver">
-                            </div>
-                            Discount Codes
-                        </a></li>
-                    
-                </ul>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" title="Messaging" [routerLink]="['/Dashboard/messaging']"
-                    [routerLinkActive]="['active']">
-                    <div class="img-icon">
-                        <img src="../../../assets/images/messaging.svg" alt="Messaging">
-                    </div> Messaging
-                </a>
-            </li>
-
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" title="Manage Notification" [routerLinkActive]="['active']" id="navbarDropdown" data-bs-auto-close="false"
-                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <div class="img-icon">
-                        <img src="../../../assets/images/inbox.svg" alt="Inbox">
-                    </div> Manage Notification
-                </a>
-
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown" (click)="preventEvent($event)">
-                    <li><a class="dropdown-item active" [routerLink]="['/Dashboard/ManageNotification']"
-                            [routerLinkActive]="['active']" title="All Notificationss">
-                            <div class="img-icon">
-                                <img src="../../../assets/images/inner-menu-img.svg" alt="All Notifications">
-                            </div>
-                            All Notifications
-                        </a></li>
-                    <li><a class="dropdown-item" [routerLink]="['/Dashboard/SendNewNotification']"
-                            [routerLinkActive]="['active']" title="Send New Notification">
-                            <div class="img-icon">
-                                <img src="../../../assets/images/inner-menu-img.svg" alt="Send New Notification">
-                            </div>
-                            Send New Notification
-                        </a></li>
-                    <li><a class="dropdown-item" [routerLink]="['/Dashboard/ManageNotificationTemplate']"
-                            [routerLinkActive]="['active']" title="Notification Templates">
-                            <div class="img-icon">
-                                <img src="../../../assets/images/inner-menu-img.svg" alt="Notification Templates">
-                            </div>
-                            Notification Templates
-                        </a></li>
-
-                </ul>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" title="Master" [routerLink]="['/Dashboard/All-masters-List']"
-                    [routerLinkActive]="['active']">
-                    <div class="img-icon">
-                        <img src="../../../assets/images/master.svg" alt="Master">
-                    </div>Master
-                </a>
-            </li>
-
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" title="Inbox" [routerLink]="['/Dashboard/manage-message']"
-                    [routerLinkActive]="['active']" id="navbarDropdown" role="button" data-bs-toggle="dropdown" data-bs-auto-close="false"
-                    aria-expanded="false">
-                    <div class="img-icon">
-                        <img src="../../../assets/images/inbox.svg" alt="Inbox">
-                    </div> Inbox
-                </a>
-
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown" (click)="preventEvent($event)">
-                    <li><a class="dropdown-item active" [routerLink]="['/Dashboard/manage-message']"
-                            [routerLinkActive]="['active']" title="Manage Messages">
-                            <div class="img-icon">
-                                <img src="../../../assets/images/inner-menu-img.svg" alt="Manage Messages">
-                            </div>
-                            Manage Messages
-                        </a></li>
-                    <li><a class="dropdown-item" [routerLink]="['/Dashboard/compose-message']"
-                            [routerLinkActive]="['active']" title="Compose Message">
-                            <div class="img-icon">
-                                <img src="../../../assets/images/inner-menu-img.svg" alt="Compose Message">
-                            </div>
-                            Compose Message
-                        </a></li>
-
-                    <li><a class="dropdown-item" [routerLink]="['/Dashboard/important-message']"
-                            [routerLinkActive]="['active']" title="Important Message">
-                            <div class="img-icon">
-                                <img src="../../../assets/images/inner-menu-img.svg" alt="Important Message">
-                            </div>
-                            Important Message
-                        </a>
-                    </li>
-                    <li><a class="dropdown-item" [routerLink]="['/Dashboard/sent-message']"
-                        [routerLinkActive]="['active']" title="Sent Message">
-                        <div class="img-icon">
-                            <img src="../../../assets/images/inner-menu-img.svg" alt="Important Message">
-                        </div>
-                        Sent Message
+            <li class="treeview">
+              <a href="javascript:void(0);">
+                <i data-feather="upload"></i>
+                <span>Exports</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-right pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">											
+                <li>
+                    <a href="javascript:void(0);">
+                        <i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Alloc Issd for Single Fund
+                    </a>
+                </li>												
+                <li>
+                    <a href="javascript:void(0);">
+                        <i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>BSC Counsel Item
+                    </a>
+                </li>										
+                <li>
+                    <a href="javascript:void(0);">
+                        <i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Issue for Tax Chart Reqs
                     </a>
                 </li>
-                    <li><a class="dropdown-item" [routerLink]="['/Dashboard/trash-message']"
-                            [routerLinkActive]="['active']" title="Trash">
-                            <div class="img-icon">
-                                <img src="../../../assets/images/inner-menu-img.svg" alt="Trash">
-                            </div>
-                            Trash
-                        </a>
-                    </li>
-                </ul>
+                <li>
+                    <a href="javascript:void(0);">
+                        <i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Issue with Cleared Columns
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);">
+                        <i class="icon-Commit"><span class="path1"></span><span class="path2"></span></i>Alloc &amp; Unissued by Fund
+                    </a>
+                </li>
+              </ul>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" title="Manage Reviews" [routerLink]="['/Dashboard/manage-review']"
-                    [routerLinkActive]="['active']">
-                    <div class="img-icon">
-                        <img src="../../../assets/images/rating-icon.svg" alt="Manage Reviews">
-                    </div>Manage Reviews
-                </a>
+            <li class="treeview">
+              <a href="javascript:void(0);">
+                <i data-feather="cpu"></i>
+                <span>Administration &amp; Maintenance</span>
+              </a>
             </li>
-
-        </ul>
-
+          </ul>
+          
+          <div class="sidebar-widgets">
+            <div class="copyright m-25 text-white-50">
+                <p>&copy; <script>document.write(new Date().getFullYear())</script> All Rights Reserved.</p>
+            </div>
+          </div>
+      </div>
     </div>
+</section>
 </aside>

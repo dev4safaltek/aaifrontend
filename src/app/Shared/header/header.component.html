@@ -1,128 +1,117 @@
-<header>
-    <nav class="navbar">
-        <div class="left-wrap">
-            <a class="toggle-Icon" href="javascript:void(0);" onclick="navToggle()">
-                <mat-icon>menu</mat-icon>
-            </a>
-            <form class="search-wrap" [formGroup]="newForm">
-                <input class="form-control me-2" [matAutocomplete]="auto" formControlName="Search" type="search" keyup placeholder="Search Menu" aria-label="Search" 
-                (keyup)="GetMenuList($event)">
-                <mat-autocomplete #auto="matAutocomplete">
-                    <mat-option *ngFor=" let option of MenuList" [value]="option"
-                     (onSelectionChange)="MenuValue(option)">
-                      {{option}}
-                    </mat-option>
-                </mat-autocomplete>
-            </form>
+<header class="main-header">
+    <div class="d-flex align-items-center logo-box justify-content-start">	
+        <!-- Logo -->
+        <a href="dashboard.html" class="logo">
+          <!-- logo-->
+          <div class="logo-mini w-60">
+                <span class="light-logo"><img src="../../../assets/images/ott_logo.png" alt="logo"></span>
+          </div>
+          <div class="logo-lg text-center">
+              <span class="light-logo">Office of the State Treasurer</span>
+          </div>
+        </a>	
+    </div>  
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-static-top">
+        <!-- Sidebar toggle button-->
+        <div class="app-menu">
+        <ul class="header-megamenu nav">
+            <li class="btn-group nav-item">
+                <a href="javascript:void(0);" class="waves-effect waves-light nav-link push-btn btn-primary-light" data-toggle="push-menu" role="button">
+                    <i data-feather="align-left"></i>
+                </a>
+            </li>				
+        </ul> 
         </div>
-        <ul class="d-flex align-items-center p-0 m-0">
-            <li class="nav-item dropdown">
-                <a class="noti-wrap" title="View Notifications" id="notiDropdown" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    <img src="../../../assets/images/noti.svg" alt="">
-                    <div class="count-wrap">
-                        {{notificationCount}}
-                    </div>
+        
+        <div class="navbar-custom-menu r-side">
+            <ul class="nav navbar-nav">	
+            <li class="btn-group nav-item d-lg-inline-flex d-none">
+                <a href="javascript:void(0);" data-provide="fullscreen" class="waves-effect waves-light nav-link full-screen btn-primary-light" title="Full Screen">
+                    <i data-feather="maximize"></i>
                 </a>
-                <div class="dropdown-menu notification" aria-labelledby="notiDropdown" >
-                    <div class="head-li">
-                        <b>Notifications</b>
-                        <a title="Clear All" (click)="ClearAllNotifications()">Clear All</a>
-                    </div>
-                    <ul class="allNotification" >
-                        <li *ngFor=" let item of Notificationdata">
-                            <a class="green-btn" (click)="OpenNotificationDetail(item.Id,item.NotificationId)" title="NotificationText">{{item.Title}}</a>
-                            <h2>{{item.Title}} </h2>
-                            <p>{{item.NotificationText}}</p>
-                            <p class="time-wrap"><img src="../../../assets/images/watch-icon.png" alt="">
-                                {{item.NotificationDate | date : 'dd MMM yyyy hh:mm a'}} &nbsp;
-                                <Button *ngIf="item.ShiftId!=null" class="custom-btn" [routerLink]="['/Dashboard/add-edit-caregivershift', item.ShiftId,3]" data-toggle="tooltip" data-placement="right" title="apply shift" > View </Button>
-                                <!-- <a *ngIf="item.ShiftId!=null" [routerLink]="['/Dashboard/add-edit-caregivershift', item.ShiftId,2]">
-                                    <img class="edit-eye" src="../../../../assets/images/edit-eye.png" alt="icon" data-toggle="tooltip" data-placement="right" title="View Shift">
-                            </a> -->
-                        </p>
-                        </li>
-                    </ul>
-                    <!-- 27 Aug 2022 at 12:00 AM -->         
-                    <div class="foot-li"><a [routerLink]="['/Dashboard/view-notification/0']" title="View All Notifications">View All Notifications</a></div>
-                </div>
             </li>
-            <li class="nav-item dropdown">
-                <a class="user-wrap dropdown-toggle" id="navbarDropdown" role="button"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                    <div class="img-wrap">
-                        <img [src]="imageSrc || '../../../../../assets/images/profile-holder.png'" alt="">
-                    </div>
-                    <span>{{fullName}}</span>
+            <!-- Notifications -->
+            <li class="dropdown notifications-menu">
+                <a href="javascript:void(0);" class="waves-effect waves-light dropdown-toggle btn-primary-light" data-bs-toggle="dropdown" title="Notifications">                 
+                  <i data-feather="bell"></i>
+                  <span>3</span>
                 </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li class="log-user">
-                        <h4>{{fullName}}</h4>{{useremail}}
-                    </li>
-                    <li *ngIf="userType==1"><a class="dropdown-item" title="My Profile" [routerLink]="['/Dashboard/profile/'+userId]" >
-                            <img src="../../../assets/images/my-profile.svg" alt="My Profile"> My Profile
-                        </a>
-                    </li>
-                    <li *ngIf="userType==2"><a class="dropdown-item" title="My Profile" [routerLink]="['/Dashboard/patient-profile/'+userId]" >
-                        <img src="../../../assets/images/my-profile.svg" alt="My Profile"> My Profile
-                    </a>
-                  </li>
-                  <li *ngIf="userType==3 && disabledControl==1"><a class="dropdown-item" title="My Profile" [routerLink]="['/Dashboard/caregiver-profile/'+userId]" >
-                    <img src="../../../assets/images/my-profile.svg" alt="My Profile"> My Profile
-                   </a>
-                  </li>
-                  <li *ngIf="userType==4 && disabledControl==1"><a class="dropdown-item" title="My Profile" [routerLink]="['/Dashboard/agency-profile/'+userId]" >
-                    <img src="../../../assets/images/my-profile.svg" alt="My Profile"> My Profile
-                   </a>
-                  </li>
-                  <li *ngIf="userType==5 && disabledControl==1"><a class="dropdown-item" title="My Profile" [routerLink]="['/Dashboard/referral-profile/'+userId]" >
-                    <img src="../../../assets/images/my-profile.svg" alt="My Profile"> My Profile
-                   </a>
-                  </li>
-                    <!-- <li  *ngIf="userType==1 || userType==2"><a class="dropdown-item" title="Notification Email">
-                            <img src="../../../assets/images/noti-icon.svg" alt="Notification Email">
-                            Notification Email
-                        </a>
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" id="switch" type="checkbox" role="switch" checked>
-                            <label class="custom-control-label" for="switch"></label>
+                <ul class="dropdown-menu animated bounceIn">
+                  <li class="header">
+                    <div class="p-20">
+                        <div class="flexbox">
+                            <div>
+                                <h4 class="mb-0 mt-0">Notifications</h4>
+                            </div>
+                            <div>
+                                <a href="javascript:void(0);" class="text-danger">Clear All</a>
+                            </div>
                         </div>
-                    </li> -->
-                    <li *ngIf="userType==1 || userType==2"><a class="dropdown-item" [routerLink]="['/ResetPassword']" title="Change Password">
-                            <img src="../../../assets/images/lock.svg" alt="Change Password"> Change Password
-                        </a>
-                    </li>
-
-                    <!-- <li  *ngIf="userType==3 || userType==4 || userType==5 && disabledControl==1">
-                        <a class="dropdown-item" title="Notification Email">
-                        <img src="../../../assets/images/noti-icon.svg" alt="Notification Email">
-                        Notification Email
-                    </a>
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" id="switch" type="checkbox" role="switch" checked>
-                        <label class="custom-control-label" for="switch"></label>
                     </div>
-                </li> -->
-                <li *ngIf="userType==3 || userType==4 || userType==5 && disabledControl==1"><a class="dropdown-item" [routerLink]="['/ResetPassword']" title="Change Password">
-                        <img src="../../../assets/images/lock.svg" alt="Change Password"> Change Password
-                    </a>
-                </li>
+                  </li>
 
-
-
-                    <li><a class="dropdown-item" (click)="logout()" title="Logout">
-                            <img src="../../../assets/images/logout.png" alt="Logout">
-                            Logout
+                  <li>
+                    <!-- inner menu: contains the actual data -->
+                    <ul class="menu sm-scrol">
+                      <li>
+                        <a href="javascript:void(0);">
+                          <i class="fa fa-users text-info"></i> Curabitur id eros quis nunc suscipit blandit.
                         </a>
+                      </li>
+                      <li>
+                        <a href="javascript:void(0);">
+                          <i class="fa fa-warning text-warning"></i> Duis malesuada justo eu sapien elementum, in semper diam posuere.
+                        </a>
+                      </li>
+                      <li>
+                        <a href="javascript:void(0);">
+                          <i class="fa fa-users text-danger"></i> Donec at nisi sit amet tortor commodo porttitor pretium a erat.
+                        </a>
+                      </li>
+                      <li>
+                        <a href="javascript:void(0);">
+                          <i class="fa fa-shopping-cart text-success"></i> In gravida mauris et nisi
+                        </a>
+                      </li>
+                      <li>
+                        <a href="javascript:void(0);">
+                          <i class="fa fa-user text-danger"></i> Praesent eu lacus in libero dictum fermentum.
+                        </a>
+                      </li>
+                      <li>
+                        <a href="javascript:void(0);">
+                          <i class="fa fa-user text-primary"></i> Nunc fringilla lorem 
+                        </a>
+                      </li>
+                      <li>
+                        <a href="javascript:void(0);">
+                          <i class="fa fa-user text-success"></i> Nullam euismod dolor ut quam interdum, at scelerisque ipsum imperdiet.
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="footer">
+                      <a href="javascript:void(0);">View all</a>
+                  </li>
+                </ul>			
+            </li>	
+                  
+            <!-- User Account-->
+            <li class="dropdown user user-menu">
+                <a href="javascript:void(0);" class="waves-effect waves-light dropdown-toggle w-auto l-h-12 bg-transparent py-0 no-shadow" data-bs-toggle="dropdown" title="User">
+                    <div class="avatar rounded-10 bg-primary-light h-40 w-40"><i class="ti-user"></i></div>
+                </a>
+                <ul class="dropdown-menu animated flipInX">
+                    <li class="user-body">
+                        <a class="dropdown-item" href="extra_profile.html"><i class="ti-user text-muted me-2"></i> Profile</a>
+                        <a class="dropdown-item" href="javascript:void(0);"><i class="ti-help text-muted me-2"></i> Help</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="auth_login.html"><i class="ti-lock text-muted me-2"></i> Logout</a>
                     </li>
                 </ul>
             </li>
         </ul>
+        </div>
     </nav>
 </header>
-
-
-
-
-
-
