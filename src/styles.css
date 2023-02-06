@@ -237,3 +237,51 @@ footer.main-footer img { width: 130px; }
     padding: 5px;
 }
 
+/* form field common style */
+.form-field input,
+.form-field select,
+.form-field .mat-select-value,
+.mat-select-panel-wrap .mat-option,
+.form-field textarea {
+    background: transparent;
+    border: 0;
+    font-weight: 500;
+    font-size: 18px;
+    color: #16152F;
+    padding: 0;
+    width: 100%;
+    padding-top: 8px;
+}
+
+.form-field textarea {
+    height: 21px;
+}
+
+.form-field mat-label,
+.form-field label {
+    font-weight: 500;
+    font-size: 18px;
+    color: #8C8C8C;
+}
+
+
+.form-field .mat-form-field-required-marker {
+    color: #eb0202;
+}
+
+.form-field input:focus-visible,
+.form-field select:focus-visible,
+.form-field textarea:focus-visible,
+.form-field textarea:focus-visible {
+    outline: 0;
+}
+
+.form-field mat-form-field {
+    width: 100%;
+}
+
+.form-field .mat-form-field-flex {
+    background: transparent;
+    padding: 0 !important;
+}
+
