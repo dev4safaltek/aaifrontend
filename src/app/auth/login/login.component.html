@@ -1,6 +1,7 @@
 
 <div class="container h-p100">		
-	<form action="" class="" method="post">  <div class="centered" >
+	<form class="" [formGroup]="form">  
+	  <div class="centered" >
 		<div class="row">
 		  <div class="col-md-12">
 			<div class="form-signin">
@@ -9,12 +10,20 @@
 			  </div>
 			  <div class="padding40">
 				<div class="input-group mb15">
-				  <input class="form-control inputnormal" data-val="true" data-val-email="Invalid Email Address" data-val-length="The field Email must be a string with a maximum length of 100." data-val-length-max="100" data-val-required="The Email field is required." id="Email" name="Email" placeholder="Email ID" type="text" value="" />
+					<mat-form-field appearance="fill">
+						<input  class="form-control inputnormal" pattern=".*\S+.*" type="text" maxlength="50" placeholder="Email" formControlName="Email" matInput autocomplete="email">
+						<mat-error *ngIf="'Username.invalid'">Please enter valid username</mat-error>
+				</mat-form-field>
+				  <!-- <input class="form-control inputnormal" data-val="true" data-val-email="Invalid Email Address" data-val-length="The field Email must be a string with a maximum length of 100." data-val-length-max="100" data-val-required="The Email field is required." id="Email" name="Email" placeholder="Email ID" type="text" value="" /> -->
 				</div>
 				
 				<div class="clearfix"></div>
 				<div class="input-group mb15"> 
-				   <input class="form-control inputnormal" data-val="true" data-val-length="The field Password must be a string with a maximum length of 100." data-val-length-max="100" data-val-required="The Password field is required." id="Password" name="Password" placeholder="Password" type="password" value="" />
+					<mat-form-field appearance="fill">
+						<input [type]="showPassword ? 'text' : 'password'" maxlength="20" matInput formControlName="Password" class="form-control inputnormal" placeholder="Password" autocomplete="new-password">
+						<mat-error *ngIf="'Password.invalid'">Please enter valid password</mat-error>
+					</mat-form-field>
+				   <!-- <input class="form-control inputnormal" data-val="true" data-val-length="The field Password must be a string with a maximum length of 100." data-val-length-max="100" data-val-required="The Password field is required." id="Password" name="Password" placeholder="Password" type="password" value="" /> -->
 				</div>
 				
 				<div class="clearfix"></div>
@@ -45,6 +54,3 @@
 
 </div>
 
-<script src="../../../assets/js/vendors.min.js"></script>
-<script src="../../../assets/js/pages/chat-popup.js"></script>
-<script src="../../../assets/icons/feather-icons/feather.min.js"></script>

@@ -163,7 +163,7 @@ footer.main-footer img { width: 130px; }
 .form-signin .input-group { display: inline-block; }
 .form-signin .glyphicon { top:0px; position: relative;}
 .form-signin .input-group .input-group-addon { padding: 0 0 8px; font-size: 14px; font-weight: 400; line-height: 1; color: #555; text-align: center; background-color: transparent; border: 0; border-radius: 0; }
-.form-signin .input-group input.form-control { width: 100%; margin: 0 !important; padding: 0.575rem 0.75rem; }
+.form-signin .input-group input.form-control { width: 100%; margin: 0 !important; padding: 0.575rem 0.75rem; border: 1px solid #86a4c3; box-sizing: inherit; }
 
 .users ul { margin: 0; padding: 0; list-style: none; display: flex; }
 .users ul li { float: left; width: 50%; margin-right: 10px; }
@@ -208,6 +208,22 @@ footer.main-footer img { width: 130px; }
 .select_language { position: absolute; top: 10px; left: 70px; }
 .select_language label { float: left; margin: 0; padding: 7px 10px 0 0; }
 .select_language select#interestselector { float: left; width: 120px; }
+
+.form-signin .mat-form-field { width: 100%; }
+.form-signin .mat-form-field .mat-form-field-wrapper.ng-tns-c70-0 { padding-bottom: 0; }
+.form-signin .mat-form-field .mat-form-field-flex.ng-tns-c70-0 { padding: 0; border-radius: 0; background: transparent; }
+.form-signin .mat-form-field-infix.ng-tns-c70-0 { width: 100%; }
+.form-signin .mat-form-field input:focus { box-shadow: none; }
+.form-signin .mat-form-field.mat-form-field-underline { position: relative; width: 100%; pointer-events: none; transform: inherit; bottom: 0; }
+.form-signin .mat-form-field.mat-form-field-appearance-fill .mat-form-field-underline::before { background-color: transparent !important; height: 0 !important; }
+.form-signin .mat-form-field.mat-form-field-appearance-fill .mat-form-field-infix { padding: 0; border: none; }
+.form-signin .mat-form-field.mat-form-field-appearance-fill .mat-form-field-ripple { height: 0 !important; }
+.form-signin .mat-form-field .mat-form-field-flex .mat-form-field-infix { padding: 0 !important; border-top: 0 !important; width: 100% !important; }
+.form-signin .mat-form-field.mat-form-field-appearance-fill .mat-form-field-flex { border-radius: 0 !important; padding: 0 !important; background: transparent !important; }
+
+
+
+
 
 /*******************Login Page CSS End****************/
 
