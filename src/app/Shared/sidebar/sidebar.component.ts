@@ -12,27 +12,20 @@ export class SidebarComponent implements OnInit {
   userType:any;
   isSubscribed:any;
   disabledControl: any;
-  public permissionList :any = [];
-  AgencyStaff:boolean = false;
-  CaregiverAgency:boolean=false;
-  CareCoordinatorStaff:boolean = false;
-  CareCoordinator:boolean=false;
-  type:any
-  subscriptiontab:boolean = true;
   constructor(public authService: AuthService,
     //private _roleService: ManageRolePermissionService
     ) { }
 
   ngOnInit(): void {
-    this.userId = this.authService.userID;
-    this.userType = this.authService.userType;
-    this.isSubscribed= this.authService.isSubscribed;
-    if(this.isSubscribed==true){
-      this.disabledControl = 1;
-    }
-    else{
-      this.disabledControl = 0;
-    }
+    // this.userId = this.authService.userID;
+    // this.userType = this.authService.userType;
+    // this.isSubscribed= this.authService.isSubscribed;
+    // if(this.isSubscribed==true){
+    //   this.disabledControl = 1;
+    // }
+    // else{
+    //   this.disabledControl = 0;
+    // }
     //this.getUserRolesAndPermissions();
   }
 

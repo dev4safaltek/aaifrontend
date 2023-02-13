@@ -37,6 +37,7 @@ import { DatePipe } from '@angular/common';
 import { IdleTimeNotificationComponent} from './Shared/idle-time-notification/idle-time-notification.component';
 import { ApplicationMasterComponent} from '../app/Platform/applicationmaster/applicationmaster.component';
 import { DashboardComponent} from '../app/Platform/dashboard/dashboard.component'; 
+import {AuthorizationComponent} from '../app/Platform/authorization/authorization.component';
 
 
 
@@ -56,7 +57,8 @@ import { DashboardComponent} from '../app/Platform/dashboard/dashboard.component
     CustomPhoneFormatPipe,
     IdleTimeNotificationComponent,
     ApplicationMasterComponent,
-    DashboardComponent
+    DashboardComponent,
+    AuthorizationComponent
   ],
   imports: [
     BrowserModule,

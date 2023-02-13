@@ -307,7 +307,6 @@ button.custom-btn.next {
 .try-us-wrap::before {
 	position: absolute;
 	content: '';
-	background-image: url(../../../assets/images/compter.png);
 	background-size: auto;
 	background-repeat: no-repeat;
 	background-position: top center;
@@ -326,7 +325,6 @@ button.custom-btn.next {
 .try-us-wrap .img-wrap::before {
 	position: absolute;
 	content: '';
-	background-image: url(../../../assets/images/try-us-dot.png);
 	background-size: auto;
 	background-repeat: no-repeat;
 	background-position: top center;

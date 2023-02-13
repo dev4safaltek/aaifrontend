@@ -64,19 +64,19 @@ export class HeaderComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    this.fullName = this.authService.userName;
-    this.useremail  = this.authService.email;
-    this.userId = this.authService.userID;
-    this.profile = this.authService.profilePicture;
-    this.imageSrc = this.profile;
-    this.userType = this.authService.userType;
-    this.isSubscribed = this.authService.isSubscribed;
-    if(this.isSubscribed==true){
-      this.disabledControl = 1;
-    }
-    else{
-      this.disabledControl = 0;
-    }
+    // this.fullName = this.authService.userName;
+    // this.useremail  = this.authService.email;
+    // this.userId = this.authService.userID;
+    // this.profile = this.authService.profilePicture;
+    // this.imageSrc = this.profile;
+    // this.userType = this.authService.userType;
+    // this.isSubscribed = this.authService.isSubscribed;
+    // if(this.isSubscribed==true){
+    //   this.disabledControl = 1;
+    // }
+    // else{
+    //   this.disabledControl = 0;
+    // }
     //this._notificationService.startConnection();
     //this._notificationService.addNotificationRecievedListener(); 
     this.CreateFormGroup();

@@ -1,1 +1,175 @@
-<div class="container"></div>
+<div class="content-wrapper">
+    <div class="container-full">
+      
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+          <div class="d-flex align-items-center">
+              <div class="me-auto">
+                  <h4 class="page-title"><i data-feather="check-circle"></i> Authorization</h4>					
+              </div>
+              
+              <div class="job-header">
+                <div class="pull-right job-btn">
+                  <button class="waves-effect waves-light btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#addnew">
+                      <i class="ti-plus"></i> Add New
+                  </button>
+                </div>
+              </div>
+          </div>
+      </div>
+      
+      <!-- Main content -->
+      <section class="content">
+          
+          <div class="row">	
+              <div class="col-12">
+                  <div class="box">				
+                      <!-- /.box-header -->
+                      <div class="box-body">	
+                          
+                          <div class="dataTables_wrapper mt-10">
+                              <div class="row">
+                                  <div class="col-sm-12 col-md-5">
+                                      <div class="dataTables_left">
+                                          <div class="dataTables_length" id="example5_length">
+                                              <label>Show 
+                                                  <select name="" aria-controls="" class="form-select form-control-sm">
+                                                      <option value="10">10</option>
+                                                      <option value="25">25</option>
+                                                      <option value="50">50</option>
+                                                      <option value="100">100</option>
+                                                  </select> 
+                                              entries</label>
+                                          </div>												
+                                      </div>
+                                  </div>
+                                  <div class="col-sm-12 col-md-7">
+                                      <div class="export_option_right">
+                                          <ul>
+                                              <li><a href="javascript:void(0);" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Print"><i class="fa fa-print "></i></a> </li>
+                                              <li><a href="javascript:void(0);" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Excel"><i class="fa fa-file-excel-o bg-success"></i></a> </li>
+                                              <li><a href="javascript:void(0);" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="PDF"><i class="fa fa-file-pdf-o bg-danger"></i></a> </li>
+                                          </ul>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          
+                          <div class="table-responsive">
+                            <mat-table class="table" [dataSource]="dataSource" matSort (matSortChange)="sortData($event)" matSortDirection="asc">     
+                                <ng-container matColumnDef="action">
+                                  <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+                                  <mat-cell *matCellDef="let element">
+                                    <div>
+                                    <!-- <a href="javascript:void(0);" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Edit"><i class="ti-pencil-alt text-primary"></i></a> 
+                                    <a href="javascript:void(0);" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Delete"><i class="ti-trash text-danger"></i></a>
+                                     -->
+                                    </div>
+                                  </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="fund">
+                                  <mat-header-cell *matHeaderCellDef mat-sort-header>Fund</mat-header-cell>
+                                  <mat-cell *matCellDef="let element"> {{element.EmpName}} </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="act">
+                                  <mat-header-cell *matHeaderCellDef mat-sort-header>Act</mat-header-cell>
+                                  <mat-cell *matCellDef="let element"> {{element.Email}} </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="section">
+                                  <mat-header-cell *matHeaderCellDef mat-sort-header> Section</mat-header-cell>
+                                  <mat-cell *matCellDef="let element"> {{element.UserName}} </mat-cell>
+                                </ng-container>
+                                <ng-container matColumnDef="counsel">
+                                  <mat-header-cell *matHeaderCellDef mat-sort-header> Bond Counsel </mat-header-cell>
+                                  <mat-cell *matCellDef="let element"> {{element.RoleName}} </mat-cell>
+                                </ng-container>
+                                
+                                <ng-container matColumnDef="amount">
+                                  <mat-header-cell *matHeaderCellDef> Authorization Amount</mat-header-cell>
+                                  <mat-cell *matCellDef="let element"> {{element.RoleName}} </mat-cell>
+                                </ng-container>
+                      
+                                <ng-container matColumnDef="date">
+                                  <mat-header-cell *matHeaderCellDef> Authorization Date </mat-header-cell>
+                                  <mat-cell *matCellDef="let element"> {{element.RoleName}} </mat-cell>
+                                </ng-container>
+                        
+                                <ng-container matColumnDef="active">
+                                  <mat-header-cell *matHeaderCellDef> Active </mat-header-cell>
+                                  <mat-cell *matCellDef="let element"> {{element.RoleName}} </mat-cell>
+                                </ng-container>
+                        
+                                <ng-container matColumnDef="noData">
+                                  <mat-footer-cell *matFooterCellDef> No records found.</mat-footer-cell>
+                                </ng-container>
+                                <div>
+                                    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+                                    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                                    <mat-footer-row *matFooterRowDef="['noData']" [hidden]="hide">
+                                    </mat-footer-row>
+                              </div>
+                              </mat-table>
+                              <mat-paginator style-paginator  [length]="recordcount" [pageSize]="pagesize" 
+                              [pageSizeOptions]="pageSizeList" (page)="pageChangeEvent($event)" >
+                              </mat-paginator>								                                               						
+                          
+                          </div>
+                          
+                      </div>
+                      <!-- /.box-body -->
+                  </div>
+                  <!-- /.box -->
+              </div>
+          </div>
+                          
+      </section>
+      <!-- /.content -->
+    </div>
+</div>
+<script>
+// Check if a new cache is available on page load.
+function checkForUpdate()
+{
+    if (window.applicationCache != undefined && window.applicationCache != null)
+    {
+        window.applicationCache.addEventListener('updateready', updateApplication);
+    }
+}
+function updateApplication(event)
+{
+    if (window.applicationCache.status != 4) return;
+    window.applicationCache.removeEventListener('updateready', updateApplication);
+    window.applicationCache.swapCache();
+    window.location.reload();
+}
+</script>
+
+	<!-- Vendor JS -->
+	<script src="../../../assets/vendor_components/datatable/datatables.min.js"></script>	
+	<script src="../../../assets/vendor_components/apexcharts-bundle/dist/apexcharts.js"></script>
+	<script src="../../../assets/vendor_components/progressbar.js-master/dist/progressbar.js"></script>
+	<script>
+		document.getElementById('e').value = new Date().toISOString().substring(0, 10);
+	</script>
+	
+	<!-- Deposito Admin App -->
+	
+	<script src="../../../assets/icons/feather-icons/feather.min.js"></script>	
+	<script src="../../../assets/vendor_components/bootstrap-select/dist/js/bootstrap-select.js"></script>
+	<script src="../../../assets/vendor_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.js"></script>
+	<script src="../../../assets/vendor_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
+	<script src="../../../assets/vendor_components/select2/dist/js/select2.full.js"></script>
+	<script src="../../../assets/vendor_plugins/input-mask/jquery.inputmask.js"></script>
+	<script src="../../../assets/vendor_plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+	<script src="../../../assets/vendor_plugins/input-mask/jquery.inputmask.extensions.js"></script>
+	<script src="../../../assets/vendor_components/moment/min/moment.min.js"></script>
+	<script src="../../../assets/vendor_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+	<script src="../../../assets/vendor_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+	<script src="../../../assets/vendor_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+	<script src="../../../assets/vendor_plugins/timepicker/bootstrap-timepicker.min.js"></script>
+	<script src="../../../assets/vendor_plugins/iCheck/icheck.min.js"></script>
+	
+	<script src="../../../assets/js/template.js"></script>
+	<script src="../../../assets/js/pages/dashboard.js"></script>	
+	<script src="../../../assets/js/pages/data-table.js"></script>	
+	<script src="../../../assets/js/pages/advanced-form-element.js"></script>
