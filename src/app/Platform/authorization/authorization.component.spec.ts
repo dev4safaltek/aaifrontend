@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AuthorizationComponent } from './authorization.component';
 
-describe('DashboardComponent', () => {
+describe('AuthorizationComponent', () => {
   let component: AuthorizationComponent;
   let fixture: ComponentFixture<AuthorizationComponent>;
 

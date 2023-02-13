@@ -9,16 +9,19 @@ import { ForgotPasswordComponent} from './auth/forgot-password/forgot-password.c
 import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
 import { ApplicationMasterComponent} from '../app/Platform/applicationmaster/applicationmaster.component';
 import { DashboardComponent} from '../app/Platform/dashboard/dashboard.component';
+import {AuthorizationComponent} from '../app/Platform/authorization/authorization.component';
+
 
 const routes: Routes = [
-  {path:'',redirectTo:'login', pathMatch:'full'},
-  {path:'login',component:LoginComponent},
+  {path:'',redirectTo:'Login', pathMatch:'full'},
+  {path:'Login',component:LoginComponent},
   {path:'SignUp',component:SignUpComponent},
   {path:'RedirectToLogin',component:RedirectionComponent},
   {path:'ForgotPassword', component:ForgotPasswordComponent},
   {path:'ResetPassword', component:ResetPasswordComponent},
   {path:'Dashboard',component:ApplicationMasterComponent,children:[
-  {path:'',component:DashboardComponent}
+  {path:'',component:DashboardComponent},
+  {path:'Authorization',component:AuthorizationComponent},
    ]},
   {path:'**',component:PagenotfoundComponent}
 ];
