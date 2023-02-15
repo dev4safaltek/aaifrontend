@@ -6,13 +6,13 @@
           <!-- sidebar menu-->
           <ul class="sidebar-menu" data-widget="tree">
             <li>
-              <a href="dashboard.html">
+              <a [routerLink]="['/Dashboard']" [routerLinkActive]="['active']" title="Dashboard" >
                 <i data-feather="monitor"></i>
                 <span>Dashboard</span>
               </a>
             </li>
             <li>
-              <a href="javascript:void(0);">
+              <a [routerLink]="['/Dashboard/Authorization']" [routerLinkActive]="['active']" title="Authorizations">
                 <i data-feather="check-circle"></i>
                 <span>Authorizations</span>
               </a>

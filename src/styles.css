@@ -151,7 +151,7 @@ footer.main-footer img { width: 130px; }
 
 
 /******************Login Page CSS***********************/
-.login-bg { background-image: url(../../aaifrontend/src/assets/images/auth-bg/bg-8.jpg) !important; background-repeat: no-repeat; height: 100vh; background-size: cover; }
+.login-bg { background-image: url(./assets/images/auth-bg/bg-8.jpg) !important; background-repeat: no-repeat; height: 100vh; background-size: cover; }
 .form-signin { background: #fff; border-radius: 10px; border: 1px #b4b4b4 solid; -webkit-box-shadow: -1px -3px 15px 2px rgba(0,0,0,0.18);
 -moz-box-shadow: -1px -3px 15px 2px rgba(0,0,0,0.18); box-shadow: -1px -3px 15px 2px rgba(0,0,0,0.18); width: 428px; }
 .padding40 { padding: 20px 40px 20px; }
